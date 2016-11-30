@@ -33,9 +33,9 @@ class JiraSearch(object):
         url = self.url + uri
 
         if isinstance(self.auth, str):
-            return requests.get(url, params=params, cookies={'JSESSIONID': self.auth}, headers=headers)
+            return requests.get(url, params=params, cookies={'JSESSIONID': self.auth}, headers=headers, verify=False)
         else:
-            return requests.get(url, params=params, auth=self.auth, headers=headers)
+            return requests.get(url, params=params, auth=self.auth, headers=headers, verify=False)
 
     def get_issue(self, key):
         """ Given an issue key (i.e. JRA-9) return the JSON representation of it. This is the only place where we deal
